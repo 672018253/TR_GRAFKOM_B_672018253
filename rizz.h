@@ -205,7 +205,7 @@ void rizz1(){
 
      // tembok bangunan
     glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.5);
+    glColor3f(0.5,0.0,0);
     glVertex3f(60.0,-10.3,-70.0);
     glVertex3f(60.0,10.0,-70.0);
     glVertex3f(-45.0,10.0,-70.0);
@@ -213,7 +213,7 @@ void rizz1(){
     glEnd();
     // tembok bangunan
     glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.5);
+    glColor3f(0.5,0.0,0);
     glVertex3f(60.0,-10.3,-70.0);
     glVertex3f(60.0,10.0,-70.0);
     glVertex3f(60.0,10.0,55.0);
@@ -221,7 +221,7 @@ void rizz1(){
     glEnd();
     // tembok bangunan
     glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.5);
+    glColor3f(1.0,0.1,0);
     glVertex3f(-45.0,-10.3,55.0);
     glVertex3f(-45.0,10.0,55.0);
     glVertex3f(60.0,10.0,55.0);
@@ -229,7 +229,7 @@ void rizz1(){
     glEnd();
     // tembok bangunan
     glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.5);
+    glColor3f(1.2,0.0,0);
     glVertex3f(-45.0,-10.3,55.0);
     glVertex3f(-45.0,10.0,55.0);
     glVertex3f(-45.0,10.0,-70.0);
