@@ -1145,6 +1145,87 @@ void tampil(void)
     glVertex3f(62.5,6.0,5.0);
     glVertex3f(62.5,1.3,5.0);
     glEnd();
+    
+     // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,30.0);
+    glVertex3f(-42.0,10.1,30.0);
+    glVertex3f(-42.0,10.1,32.0);
+    glVertex3f(-28.0,10.3,32.0);
+    glEnd();
+       // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,14.0);
+    glVertex3f(-42.0,10.1,14.0);
+    glVertex3f(-42.0,10.1,16.0);
+    glVertex3f(-28.0,10.3,16.0);
+    glEnd();
+       // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,22.0);
+    glVertex3f(-42.0,10.1,30.0);
+    glVertex3f(-42.0,10.1,32.0);
+    glVertex3f(-28.0,10.3,24.0);
+    glEnd();
+       // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,22.0);
+    glVertex3f(-42.0,10.1,14.0);
+    glVertex3f(-42.0,10.1,16.0);
+    glVertex3f(-28.0,10.3,24.0);
+    glEnd();
+    // atap tulisan f
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,-2.0);
+    glVertex3f(-42.0,10.1,-2.0);
+    glVertex3f(-42.0,10.1,-4.0);
+    glVertex3f(-28.0,10.3,-4.0);
+    glEnd();
+       // atap tulisan f
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-40.0,10.3,-16.0);
+    glVertex3f(-42.0,10.1,-16.0);
+    glVertex3f(-42.0,10.1,-2.0);
+    glVertex3f(-40.0,10.3,-2.0);
+    glEnd();
+        // atap tulisan f
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-36.0,10.3,-14.0);
+    glVertex3f(-34.0,10.1,-14.0);
+    glVertex3f(-34.0,10.1,-2.0);
+    glVertex3f(-36.0,10.3,-2.0);
+    glEnd();
+    // atap tulisan c
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,-32.0);
+    glVertex3f(-42.0,10.1,-32.0);
+    glVertex3f(-42.0,10.1,-30.0);
+    glVertex3f(-28.0,10.3,-30.0);
+    glEnd();
+           // atap tulisan c
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-40.0,10.3,-30.0);
+    glVertex3f(-42.0,10.1,-30.0);
+    glVertex3f(-42.0,10.1,-44.0);
+    glVertex3f(-40.0,10.3,-44.0);
+    glEnd();
+          // atap tulisan c
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,-30.0);
+    glVertex3f(-30.0,10.1,-30.0);
+    glVertex3f(-30.0,10.1,-44.0);
+    glVertex3f(-28.0,10.3,-44.0);
+    glEnd();
 
 
     glPushMatrix();
