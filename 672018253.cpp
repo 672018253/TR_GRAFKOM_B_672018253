@@ -1070,6 +1070,81 @@ void tampil(void)
     glVertex3f(60.0,10.1,-7.5);
     glVertex3f(40.0,-10.1,-7.5);
     glEnd();
+       // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,-25.0);
+    glVertex3f(65.0,6.0,-25.0);
+    glVertex3f(65.0,6.0,-20.0);
+    glVertex3f(65.0,-10.3,-20.0);
+    glEnd();
+
+    // Gerbang 2
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,-20.0);
+    glVertex3f(65.0,6.0,-20.0);
+    glVertex3f(60.0,6.0,-20.0);
+    glVertex3f(60.0,-10.3,-20.0);
+    glEnd();
+
+    // Gerbang 3
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,-25.0);
+    glVertex3f(65.0,6.0,-25.0);
+    glVertex3f(60.0,6.0,-25.0);
+    glVertex3f(60.0,-10.3,-25.0);
+    glEnd();
+
+    // Gerbang 4
+    glBegin(GL_QUADS);
+    glColor3f(0.0,0.0,0.0);
+    glVertex3f(65.0,6.0,-20.0);
+    glVertex3f(60.0,6.0,-20.0);
+    glVertex3f(60.0,6.0,-25.0);
+    glVertex3f(65.0,6.0,-25.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,5.0);
+    glVertex3f(65.0,6.0,5.0);
+    glVertex3f(65.0,6.0,10.0);
+    glVertex3f(65.0,-10.3,10.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,5.0);
+    glVertex3f(65.0,6.0,5.0);
+    glVertex3f(60.0,6.0,5.0);
+    glVertex3f(60.0,-10.3,5.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,10.0);
+    glVertex3f(65.0,6.0,10.0);
+    glVertex3f(60.0,6.0,10.0);
+    glVertex3f(60.0,-10.3,10.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(0.0,0.0,0.0);
+    glVertex3f(65.0,6.0,5.0);
+    glVertex3f(60.0,6.0,5.0);
+    glVertex3f(60.0,6.0,10.0);
+    glVertex3f(65.0,6.0,10.0);
+    glEnd();
+    // papan nama
+    glBegin(GL_QUADS);
+    glColor3f(0.0,0.0,0.0);
+    glVertex3f(62.5,1.3,-20.0);
+    glVertex3f(62.5,6.0,-20.0);
+    glVertex3f(62.5,6.0,5.0);
+    glVertex3f(62.5,1.3,5.0);
+    glEnd();
 
 
     glPushMatrix();
