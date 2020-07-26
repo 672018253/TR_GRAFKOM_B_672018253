@@ -1,47 +1,28 @@
-#include<windows.h>
-#include<gl/glut.h>
+#include <windows.h>
+#include <gl/glut.h>
+#include <math.h>
 
-void init(void);
-void tampil(void);
-void keyboard(unsigned char, int, int);
-void ukuran(int, int);
+float xrot = 0;
+float yrot = 0;
+float xdiff = 0;
+float ydiff = 0;
+bool mousedown = false;
 
 int is_depth;
 
-int main (int argc, char **argv)
-{
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(800, 600);
-    glutInitWindowPosition(250, 80);
-    glutCreateWindow("Glen pippa (672018189)");
-    init();
-    glutDisplayFunc(tampil);
-    glutKeyboardFunc(keyboard);
-    glutReshapeFunc(ukuran);
-    glutMainLoop();
-    return 0;
-}
-
-void init(void)
-{
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glMatrixMode(GL_PROJECTION);
+void myInit(void) {
+    glClearColor(0.0f, 0.1f, 0.0f, 1.0f);
+    glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
-    is_depth=1;
-    glMatrixMode(GL_MODELVIEW);
-    glPointSize(9.0);
-    glLineWidth(6.0f);
+    glDepthFunc(GL_LEQUAL);
+    glShadeModel(GL_SMOOTH);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
-void tampil(void)
-{
-    if (is_depth)
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    else
-        glClear(GL_COLOR_BUFFER_BIT);
+void lapangan() {
+    glPushMatrix();
 
-       // fondasi lapangan
+	// fondasi lapangan
     glBegin(GL_QUADS);
     glColor3f(0.0,0.5,0.0);
     glVertex3f(70,-10.3,-85.0);
@@ -149,7 +130,7 @@ void tampil(void)
     glVertex3f(-20,-9.9,35.0);
     glVertex3f(35,-9.9,35.0);
     glEnd();
-    
+
     // warna lapangan putih
     glBegin(GL_QUADS);
     glColor3f(1.0,1.0,1.0);
@@ -371,6 +352,86 @@ void tampil(void)
     glVertex3f(-25.0,10.2,-55.0);
     glEnd();
 
+    // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,30.0);
+    glVertex3f(-42.0,10.1,30.0);
+    glVertex3f(-42.0,10.1,32.0);
+    glVertex3f(-28.0,10.3,32.0);
+    glEnd();
+       // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,14.0);
+    glVertex3f(-42.0,10.1,14.0);
+    glVertex3f(-42.0,10.1,16.0);
+    glVertex3f(-28.0,10.3,16.0);
+    glEnd();
+       // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,22.0);
+    glVertex3f(-42.0,10.1,30.0);
+    glVertex3f(-42.0,10.1,32.0);
+    glVertex3f(-28.0,10.3,24.0);
+    glEnd();
+       // atap tulisan m
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,22.0);
+    glVertex3f(-42.0,10.1,14.0);
+    glVertex3f(-42.0,10.1,16.0);
+    glVertex3f(-28.0,10.3,24.0);
+    glEnd();
+    // atap tulisan f
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,-2.0);
+    glVertex3f(-42.0,10.1,-2.0);
+    glVertex3f(-42.0,10.1,-4.0);
+    glVertex3f(-28.0,10.3,-4.0);
+    glEnd();
+       // atap tulisan f
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-40.0,10.3,-16.0);
+    glVertex3f(-42.0,10.1,-16.0);
+    glVertex3f(-42.0,10.1,-2.0);
+    glVertex3f(-40.0,10.3,-2.0);
+    glEnd();
+        // atap tulisan f
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-36.0,10.3,-14.0);
+    glVertex3f(-34.0,10.1,-14.0);
+    glVertex3f(-34.0,10.1,-2.0);
+    glVertex3f(-36.0,10.3,-2.0);
+    glEnd();
+    // atap tulisan c
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,-32.0);
+    glVertex3f(-42.0,10.1,-32.0);
+    glVertex3f(-42.0,10.1,-30.0);
+    glVertex3f(-28.0,10.3,-30.0);
+    glEnd();
+           // atap tulisan c
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-40.0,10.3,-30.0);
+    glVertex3f(-42.0,10.1,-30.0);
+    glVertex3f(-42.0,10.1,-44.0);
+    glVertex3f(-40.0,10.3,-44.0);
+    glEnd();
+          // atap tulisan c
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(-28.0,10.3,-30.0);
+    glVertex3f(-30.0,10.1,-30.0);
+    glVertex3f(-30.0,10.1,-44.0);
+    glVertex3f(-28.0,10.3,-44.0);
+    glEnd();
      // tempat penonton 4
     glBegin(GL_QUADS);
     glColor3f(0.7,0.0,0.0);
@@ -398,12 +459,103 @@ void tampil(void)
     glEnd();
     // tembok bangunan
     glBegin(GL_QUADS);
-    glColor3f(1,1,0.8);
+    glColor3f(1,1,0.7);
     glVertex3f(60.0,-10.3,-70.0);
     glVertex3f(60.0,10.0,-70.0);
     glVertex3f(60.0,10.0,55.0);
     glVertex3f(60.0,-10.3,55.0);
     glEnd();
+
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,-25.0);
+    glVertex3f(65.0,6.0,-25.0);
+    glVertex3f(65.0,6.0,-20.0);
+    glVertex3f(65.0,-10.3,-20.0);
+    glEnd();
+    // Gerbang 2
+    glBegin(GL_QUADS);
+    glColor3f(0.7,0.0,0.0);
+    glVertex3f(65.0,-10.3,-20.0);
+    glVertex3f(65.0,6.0,-20.0);
+    glVertex3f(60.0,6.0,-20.0);
+    glVertex3f(60.0,-10.3,-20.0);
+    glEnd();
+    // Gerbang 3
+    glBegin(GL_QUADS);
+    glColor3f(0.8,0.0,0.0);
+    glVertex3f(65.0,-10.3,-25.0);
+    glVertex3f(65.0,6.0,-25.0);
+    glVertex3f(60.0,6.0,-25.0);
+    glVertex3f(60.0,-10.3,-25.0);
+    glEnd();
+    // Gerbang 4
+    glBegin(GL_QUADS);
+    glColor3f(0.0,0.0,0.0);
+    glVertex3f(65.0,6.0,-20.0);
+    glVertex3f(60.0,6.0,-20.0);
+    glVertex3f(60.0,6.0,-25.0);
+    glVertex3f(65.0,6.0,-25.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex3f(65.0,-10.3,5.0);
+    glVertex3f(65.0,6.0,5.0);
+    glVertex3f(65.0,6.0,10.0);
+    glVertex3f(65.0,-10.3,10.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(0.7,0.0,0.0);
+    glVertex3f(65.0,-10.3,5.0);
+    glVertex3f(65.0,6.0,5.0);
+    glVertex3f(60.0,6.0,5.0);
+    glVertex3f(60.0,-10.3,5.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(0.8,0.0,0.0);
+    glVertex3f(65.0,-10.3,10.0);
+    glVertex3f(65.0,6.0,10.0);
+    glVertex3f(60.0,6.0,10.0);
+    glVertex3f(60.0,-10.3,10.0);
+    glEnd();
+    // Gerbang 1
+    glBegin(GL_QUADS);
+    glColor3f(0.0,0.0,0.0);
+    glVertex3f(65.0,6.0,5.0);
+    glVertex3f(60.0,6.0,5.0);
+    glVertex3f(60.0,6.0,10.0);
+    glVertex3f(65.0,6.0,10.0);
+    glEnd();
+    // papan nama
+    glBegin(GL_QUADS);
+    glColor3f(0.0,0.0,0.0);
+    glVertex3f(62.5,1.3,-20.0);
+    glVertex3f(62.5,6.0,-20.0);
+    glVertex3f(62.5,6.0,5.0);
+    glVertex3f(62.5,1.3,5.0);
+    glEnd();
+
+    //pintu
+    glBegin(GL_QUADS);
+    glColor3f(0.5,0.0,0.0);
+    glVertex3f(60.5,-10.3,-20.0);
+    glVertex3f(60.5,0.0,-20.0);
+    glVertex3f(60.5,0.0,-7.7);
+    glVertex3f(60.5,-10.3,-7.7);
+    glEnd();
+    //pintu
+    glBegin(GL_QUADS);
+    glColor3f(0.5,0.0,0.0);
+    glVertex3f(60.5,-10.3,5.0);
+    glVertex3f(60.5,0.0,5.0);
+    glVertex3f(60.5,0.0,-7.3);
+    glVertex3f(60.5,-10.3,-7.3);
+    glEnd();
+
     // tembok bangunan
     glBegin(GL_QUADS);
     glColor3f(1,1,0.6);
@@ -414,7 +566,7 @@ void tampil(void)
     glEnd();
     // tembok bangunan
     glBegin(GL_QUADS);
-    glColor3f(1,1,1.9);
+    glColor3f(1,1,0.7);
     glVertex3f(-45.0,-10.3,55.0);
     glVertex3f(-45.0,10.0,55.0);
     glVertex3f(-45.0,10.0,-70.0);
@@ -1070,238 +1222,133 @@ void tampil(void)
     glVertex3f(60.0,10.1,-7.5);
     glVertex3f(40.0,-10.1,-7.5);
     glEnd();
-       // Gerbang 1
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(65.0,-10.3,-25.0);
-    glVertex3f(65.0,6.0,-25.0);
-    glVertex3f(65.0,6.0,-20.0);
-    glVertex3f(65.0,-10.3,-20.0);
-    glEnd();
 
-    // Gerbang 2
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(65.0,-10.3,-20.0);
-    glVertex3f(65.0,6.0,-20.0);
-    glVertex3f(60.0,6.0,-20.0);
-    glVertex3f(60.0,-10.3,-20.0);
-    glEnd();
-
-    // Gerbang 3
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(65.0,-10.3,-25.0);
-    glVertex3f(65.0,6.0,-25.0);
-    glVertex3f(60.0,6.0,-25.0);
-    glVertex3f(60.0,-10.3,-25.0);
-    glEnd();
-
-    // Gerbang 4
-    glBegin(GL_QUADS);
-    glColor3f(0.0,0.0,0.0);
-    glVertex3f(65.0,6.0,-20.0);
-    glVertex3f(60.0,6.0,-20.0);
-    glVertex3f(60.0,6.0,-25.0);
-    glVertex3f(65.0,6.0,-25.0);
-    glEnd();
-    // Gerbang 1
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(65.0,-10.3,5.0);
-    glVertex3f(65.0,6.0,5.0);
-    glVertex3f(65.0,6.0,10.0);
-    glVertex3f(65.0,-10.3,10.0);
-    glEnd();
-    // Gerbang 1
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(65.0,-10.3,5.0);
-    glVertex3f(65.0,6.0,5.0);
-    glVertex3f(60.0,6.0,5.0);
-    glVertex3f(60.0,-10.3,5.0);
-    glEnd();
-    // Gerbang 1
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(65.0,-10.3,10.0);
-    glVertex3f(65.0,6.0,10.0);
-    glVertex3f(60.0,6.0,10.0);
-    glVertex3f(60.0,-10.3,10.0);
-    glEnd();
-    // Gerbang 1
-    glBegin(GL_QUADS);
-    glColor3f(0.0,0.0,0.0);
-    glVertex3f(65.0,6.0,5.0);
-    glVertex3f(60.0,6.0,5.0);
-    glVertex3f(60.0,6.0,10.0);
-    glVertex3f(65.0,6.0,10.0);
-    glEnd();
-    // papan nama
-    glBegin(GL_QUADS);
-    glColor3f(0.0,0.0,0.0);
-    glVertex3f(62.5,1.3,-20.0);
-    glVertex3f(62.5,6.0,-20.0);
-    glVertex3f(62.5,6.0,5.0);
-    glVertex3f(62.5,1.3,5.0);
-    glEnd();
-    
-     // atap tulisan m
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-28.0,10.3,30.0);
-    glVertex3f(-42.0,10.1,30.0);
-    glVertex3f(-42.0,10.1,32.0);
-    glVertex3f(-28.0,10.3,32.0);
-    glEnd();
-       // atap tulisan m
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-28.0,10.3,14.0);
-    glVertex3f(-42.0,10.1,14.0);
-    glVertex3f(-42.0,10.1,16.0);
-    glVertex3f(-28.0,10.3,16.0);
-    glEnd();
-       // atap tulisan m
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-28.0,10.3,22.0);
-    glVertex3f(-42.0,10.1,30.0);
-    glVertex3f(-42.0,10.1,32.0);
-    glVertex3f(-28.0,10.3,24.0);
-    glEnd();
-       // atap tulisan m
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-28.0,10.3,22.0);
-    glVertex3f(-42.0,10.1,14.0);
-    glVertex3f(-42.0,10.1,16.0);
-    glVertex3f(-28.0,10.3,24.0);
-    glEnd();
-    // atap tulisan f
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-28.0,10.3,-2.0);
-    glVertex3f(-42.0,10.1,-2.0);
-    glVertex3f(-42.0,10.1,-4.0);
-    glVertex3f(-28.0,10.3,-4.0);
-    glEnd();
-       // atap tulisan f
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-40.0,10.3,-16.0);
-    glVertex3f(-42.0,10.1,-16.0);
-    glVertex3f(-42.0,10.1,-2.0);
-    glVertex3f(-40.0,10.3,-2.0);
-    glEnd();
-        // atap tulisan f
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-36.0,10.3,-14.0);
-    glVertex3f(-34.0,10.1,-14.0);
-    glVertex3f(-34.0,10.1,-2.0);
-    glVertex3f(-36.0,10.3,-2.0);
-    glEnd();
-    // atap tulisan c
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-28.0,10.3,-32.0);
-    glVertex3f(-42.0,10.1,-32.0);
-    glVertex3f(-42.0,10.1,-30.0);
-    glVertex3f(-28.0,10.3,-30.0);
-    glEnd();
-           // atap tulisan c
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-40.0,10.3,-30.0);
-    glVertex3f(-42.0,10.1,-30.0);
-    glVertex3f(-42.0,10.1,-44.0);
-    glVertex3f(-40.0,10.3,-44.0);
-    glEnd();
-          // atap tulisan c
-    glBegin(GL_QUADS);
-    glColor3f(1.0,0.0,0.0);
-    glVertex3f(-28.0,10.3,-30.0);
-    glVertex3f(-30.0,10.1,-30.0);
-    glVertex3f(-30.0,10.1,-44.0);
-    glVertex3f(-28.0,10.3,-44.0);
-    glEnd();
-
-
-    glPushMatrix();
     glPopMatrix();
+}
 
+void tampil(void) {
+    glPushMatrix();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glRotatef(xrot, 1, 0, 0);
+    glRotatef(yrot, 0, 1, 0);
+    lapangan();
+    glPopMatrix();
     glutSwapBuffers();
 }
 
-void keyboard(unsigned char key, int x, int y)
-{
-    switch (key)
-    {
-        case 'w':
-        case 'W':
-            glTranslatef(0.0,0.0,3.0);
-            break;
-        case 'd':
-        case 'D':
-            glTranslatef(3.0,0.0,0.0);
-            break;
-        case 's':
-        case 'S':
-            glTranslatef(0.0,0.0,-3.0);
-            break;
-        case 'a':
-        case 'A':
-            glTranslatef(-3.0,0.0,0.0);
-            break;
-        case '7':
-            glTranslatef(0.0,3.0,0.0);
-            break;
-        case '9':
-            glTranslatef(0.0,-3.0,0.0);
-            break;
-        case '2':
-            glRotatef(2.0,1.0,0.0,0.0);
-            break;
-        case '8':
-            glRotatef(-2.0,1.0,0.0,0.0);
-            break;
-        case '6':
-            glRotatef(2.0,0.0,1.0,0.0);
-            break;
-        case '4':
-            glRotatef(-2.0,0.0,1.0,0.0);
-            break;
-        case '1':
-            glRotatef(2.0,0.0,0.0,1.0);
-            break;
-        case '3':
-            glRotatef(-2.0,0.0,0.0,1.0);
-            break;
-        case '5':
-            if (is_depth)
-            {
-                is_depth = 0;
-                glDisable(GL_DEPTH_TEST);
-            }
-            else
-            {
-                is_depth = 1;
-                glEnable(GL_DEPTH_TEST);
-            }
-
+void keyboard(unsigned char key, int x, int y) {
+    switch (key) {
+    case 'w':
+    case 'W':
+        glTranslatef(0, 0, 3);
+        break;
+    case 's':
+    case 'S':
+        glTranslatef(0, 0, -3);
+        break;
+    case 'd':
+    case 'D':
+        glTranslatef(3, 0, 0);
+        break;
+    case 'a':
+    case 'A':
+        glTranslatef(-3, 0, 0);
+        break;
+    case 'q':
+    case 'Q':
+        glTranslatef(0, 3, 0);
+        break;
+    case 'e':
+    case 'E':
+        glTranslatef(0, -3, 0);
+        break;
+    case '=':
+    case '+':
+        glScalef(1.1, 1.1, 1.1);
+        break;
+    case '-':
+    case '_':
+        glScalef(0.9, 0.9, 0.9);
+        break;
+    case '2':
+        glRotatef(-2, 1, 0, 0);
+        break;
+    case '8':
+        glRotatef(2, 1, 0, 0);
+        break;
+    case '6':
+        glRotatef(2, 0, 1, 0);
+        break;
+    case '4':
+        glRotatef(-2, 0, 1, 0);
+        break;
+    case '9':
+        glRotatef(2, 0, 0, 1);
+        break;
+    case '7':
+        glRotatef(-2, 0, 0, 1);
+        break;
+    case '0':
+    case 27:
+        exit(0);
+        break;
+    case '5':
+        if (is_depth) {
+            is_depth = 0;
+            glDisable(GL_DEPTH_TEST);
+        }
+        else {
+            is_depth = 1;
+            glEnable(GL_DEPTH_TEST);
+        }
     }
     tampil();
 }
 
-void ukuran(int lebar, int tinggi)
-{
-    if (tinggi == 0) tinggi = 1;
+void mouse(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        mousedown = true;
+        xdiff = x - yrot;
+        ydiff = -y + xrot;
+    }
+    else {
+        mousedown = false;
+    }
+    glutPostRedisplay();
+}
 
+void mousemotion(int x, int y) {
+    if (mousedown) {
+        yrot = x - xdiff;
+        xrot = y + ydiff;
+
+        glutPostRedisplay();
+    }
+}
+
+void ukuran(GLsizei width, GLsizei height) {
+    if (height == 0) height = 1;
+    GLfloat aspect = (GLfloat)width / (GLfloat)height;
+    glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(50.0, lebar / tinggi, 5.0, 500.0);
-    glTranslatef(7.0, -5.0, -150.0);
+    gluPerspective(50.0f, aspect, 0.1f, -100.0f);
+    glTranslatef(0, 0, -200);
     glMatrixMode(GL_MODELVIEW);
 }
 
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutInitWindowPosition(133, 54);
+    glutCreateWindow("672018205-253-189");
+    myInit();
+    glutDisplayFunc(tampil);
+    glutKeyboardFunc(keyboard);
+    glutMouseFunc(mouse);
+    glutMotionFunc(mousemotion);
+    glutReshapeFunc(ukuran);
+    glutMainLoop();
+    return 0;
+}
